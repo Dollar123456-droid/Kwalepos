@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="google-site-verification" content="rnV-4CYHmd--FTZ2ZQUDAFwvTELaCMSA_xCabWi7vf4" />
+
 <title>KWALEPOS BIO & PROJECTS</title>
 
 <style>
@@ -123,6 +126,7 @@ body {
     transition: right .35s ease;
     border-left: 1px solid silver;
     box-shadow: -5px 0 25px rgba(255,255,255,.15);
+    overflow-y: auto;
 }
 
 .side-menu.active {
@@ -265,6 +269,68 @@ a {
     font-size: .75em;
 }
 
+/* DEVICE INFORMATION */
+.device-info {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid silver;
+    border-radius: 12px;
+    background: rgba(255,255,255,.07);
+    box-shadow: 0 0 15px rgba(255,255,255,.15);
+    text-align: left;
+}
+
+.device-info h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.device-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+    font-size: .72em;
+    min-height: 30px;
+}
+
+.device-row:last-child {
+    border-bottom: none;
+}
+
+.device-label {
+    color: #aaa;
+    text-align: left;
+    flex-shrink: 0;
+}
+
+.device-value {
+    color: white;
+    text-align: right;
+    max-width: 62%;
+    word-break: break-word;
+    text-shadow: 0 0 8px silver;
+}
+
+.battery-bar {
+    width: 100%;
+    height: 6px;
+    margin-top: 8px;
+    background: rgba(255,255,255,.15);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.battery-level {
+    height: 100%;
+    width: 0%;
+    background: white;
+    border-radius: 10px;
+    transition: width .5s ease;
+}
+
 /* SECTIONS */
 .section {
     margin-top: 18px;
@@ -356,7 +422,7 @@ a {
 <!-- 5 SECOND DISCLAIMER -->
 <div id="disclaimer">
     <div class="disclaimer-box">
-        <h2>⚠️ DISCLAIMER</h2>
+        <h2>DISCLAIMER</h2>
 
         <p>
             This website is for personal and informational purposes.
@@ -377,26 +443,28 @@ a {
 <!-- MENU -->
 <div class="side-menu" id="sideMenu">
 
-    <h2>☰ MENU</h2>
+    <h2>MENU</h2>
 
-    <a href="#home" onclick="closeMenu()">🏠 HOME</a>
+    <a href="#home" onclick="closeMenu()">HOME</a>
 
-    <a href="#" onclick="showPopup('ABOUT')">👤 ABOUT</a>
+    <a href="#" onclick="showPopup('ABOUT')">ABOUT</a>
 
-    <a href="#" onclick="showPopup('INFO')">ℹ️ INFO</a>
+    <a href="#" onclick="showPopup('INFO')">INFO</a>
 
-    <a href="#" onclick="showPopup('POLICY')">📜 POLICY</a>
+    <a href="#" onclick="showPopup('POLICY')">POLICY</a>
 
-    <a href="#skills" onclick="closeMenu()">💻 SKILLS</a>
+    <a href="#skills" onclick="closeMenu()">SKILLS</a>
 
-    <a href="#links" onclick="closeMenu()">🔗 LINKS</a>
+    <a href="#device" onclick="closeMenu()">DEVICE INFORMATION</a>
+
+    <a href="#links" onclick="closeMenu()">LINKS</a>
 
     <a href="https://t.me/kwalepos254" target="_blank">
-        ✈️ TELEGRAM
+        TELEGRAM
     </a>
 
     <a href="https://wa.me/27767749959" target="_blank">
-        💬 WHATSAPP
+        WHATSAPP
     </a>
 
 </div>
@@ -409,7 +477,7 @@ a {
         𝙆𝙄𝙉𝙂 𝙆𝙒𝘼𝙇𝙀𝙋𝙊𝙎
     </div>
 
-    <!-- PROFILE DIRECTLY UNDER TITLE -->
+    <!-- PROFILE -->
     <div class="profile-area">
         <img
             src="https://cdn.phototourl.com/free/2026-08-24-d3764ede-841c-4dea-ac02-ba2d394c11bf.png"
@@ -424,10 +492,9 @@ a {
         Your browser does not support the audio element.
     </audio>
 
-    <!-- MUSIC BUTTON DIRECTLY UNDER PROFILE -->
     <div class="music-area">
         <button class="music-button" onclick="toggleMusic()">
-            🔊 PLAY MUSIC
+            PLAY MUSIC
         </button>
     </div>
 
@@ -454,6 +521,164 @@ a {
                 𝗕𝗘𝗦𝗧 𝗙𝗥𝗜𝗘𝗡𝗗:
                 THEY ARE ALL FAKE
             </a>
+        </div>
+
+    </div>
+
+    <!-- DEVICE INFORMATION -->
+    <div class="device-info" id="device">
+
+        <h2>DEVICE INFORMATION</h2>
+
+        <div class="device-row">
+            <span class="device-label">DEVICE</span>
+            <span class="device-value" id="deviceType">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">OPERATING SYSTEM</span>
+            <span class="device-value" id="osInfo">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">BROWSER</span>
+            <span class="device-value" id="browserInfo">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">BROWSER VERSION</span>
+            <span class="device-value" id="browserVersion">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">PLATFORM</span>
+            <span class="device-value" id="platformInfo">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">SCREEN RESOLUTION</span>
+            <span class="device-value" id="screenInfo">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">AVAILABLE SCREEN</span>
+            <span class="device-value" id="availableScreen">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">PIXEL RATIO</span>
+            <span class="device-value" id="pixelRatio">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">TOUCHSCREEN</span>
+            <span class="device-value" id="touchInfo">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">CPU THREADS</span>
+            <span class="device-value" id="cpuInfo">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">DEVICE MEMORY</span>
+            <span class="device-value" id="memoryInfo">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">LANGUAGE</span>
+            <span class="device-value" id="languageInfo">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">TIME ZONE</span>
+            <span class="device-value" id="timezoneInfo">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">CONNECTION</span>
+            <span class="device-value" id="connectionInfo">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">NETWORK TYPE</span>
+            <span class="device-value" id="networkInfo">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">BATTERY</span>
+            <span class="device-value" id="batteryStatus">
+                Checking...
+            </span>
+        </div>
+
+        <div class="battery-bar">
+            <div class="battery-level" id="batteryLevel"></div>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">COOKIES</span>
+            <span class="device-value" id="cookiesInfo">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">DO NOT TRACK</span>
+            <span class="device-value" id="dntInfo">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">ONLINE STATUS</span>
+            <span class="device-value" id="onlineInfo">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">WINDOW SIZE</span>
+            <span class="device-value" id="windowInfo">
+                Detecting...
+            </span>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label">REFERRER</span>
+            <span class="device-value" id="referrerInfo">
+                Detecting...
+            </span>
         </div>
 
     </div>
@@ -611,7 +836,7 @@ function showPopup(type) {
 
     if (type === "ABOUT") {
 
-        title.textContent = "👤 ABOUT";
+        title.textContent = "ABOUT";
 
         text.textContent =
             "Welcome to the official KWALEPOS profile. " +
@@ -620,16 +845,16 @@ function showPopup(type) {
 
     if (type === "INFO") {
 
-        title.textContent = "ℹ️ INFO";
+        title.textContent = "INFO";
 
         text.textContent =
             "Personal profile and project showcase with " +
-            "a background video, music player, live clock and navigation menu.";
+            "a background video, music player, live clock and device information.";
     }
 
     if (type === "POLICY") {
 
-        title.textContent = "📜 POLICY";
+        title.textContent = "POLICY";
 
         text.textContent =
             "Please use this website responsibly. " +
@@ -657,7 +882,7 @@ function toggleMusic() {
 
         music.play().then(function() {
 
-            button.textContent = "⏸️ PAUSE MUSIC";
+            button.textContent = "PAUSE MUSIC";
 
         }).catch(function(error) {
 
@@ -669,7 +894,7 @@ function toggleMusic() {
 
         music.pause();
 
-        button.textContent = "🔊 PLAY MUSIC";
+        button.textContent = "PLAY MUSIC";
     }
 }
 
@@ -685,7 +910,7 @@ window.addEventListener("load", function() {
     music.play().then(function() {
 
         document.querySelector(".music-button").textContent =
-            "⏸️ PAUSE MUSIC";
+            "PAUSE MUSIC";
 
     }).catch(function() {
 
@@ -695,7 +920,31 @@ window.addEventListener("load", function() {
 
 });
 
-</script>
 
-</body>
-</html>
+/* =========================
+   BROWSER DETECTION
+========================= */
+
+function getBrowserInfo() {
+
+    const ua = navigator.userAgent;
+
+    let browser = "Unknown Browser";
+    let version = "Unknown";
+
+    if (ua.includes("Edg/")) {
+
+        browser = "Microsoft Edge";
+        version = ua.match(/Edg\/([0-9.]+)/)?.[1] || "Unknown";
+
+    } else if (ua.includes("OPR/")) {
+
+        browser = "Opera";
+        version = ua.match(/OPR\/([0-9.]+)/)?.[1] || "Unknown";
+
+    } else if (ua.includes("Chrome/")) {
+
+        browser = "Google Chrome";
+        version = ua.match(/Chrome\/([0-9.]+)/)?.[1] || "Unknown";
+
+    } else if (ua.includes("Firefox/"
