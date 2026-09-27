@@ -31,7 +31,6 @@
             overflow-x: hidden;
         }
 
-        /* BACKGROUND VIDEO */
         .video-bg {
             position: fixed;
             inset: 0;
@@ -46,49 +45,6 @@
             inset: 0;
             background: rgba(0, 0, 0, .55);
             z-index: -1;
-        }
-
-        /* DISCLAIMER */
-        #disclaimer {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            text-align: center;
-            background: #000;
-            transition: opacity .6s ease;
-        }
-
-        .disclaimer-box {
-            width: 100%;
-            max-width: 350px;
-            padding: 25px;
-            border: 1px solid #aaa;
-            border-radius: 15px;
-            background: rgba(0, 0, 0, .92);
-            box-shadow: 0 0 25px rgba(255, 255, 255, .45);
-        }
-
-        .disclaimer-box h2 {
-            margin-bottom: 15px;
-            text-shadow: 0 0 15px #fff;
-        }
-
-        .disclaimer-box p {
-            color: #ddd;
-            font-size: 13px;
-            line-height: 1.5;
-            text-shadow: none;
-        }
-
-        .countdown {
-            margin-top: 15px;
-            font-size: 28px;
-            font-weight: bold;
-            text-shadow: 0 0 15px #fff;
         }
 
         /* CLOCK */
@@ -183,7 +139,6 @@
             animation: fadeIn 1s ease-in-out;
         }
 
-        /* TITLE */
         .title {
             margin-bottom: 15px;
             font-size: 1.8em;
@@ -213,8 +168,7 @@
             margin-bottom: 25px;
         }
 
-        .music-button,
-        .close {
+        .music-button {
             padding: 10px 20px;
             border: 1px solid #aaa;
             border-radius: 25px;
@@ -225,8 +179,7 @@
             transition: .3s;
         }
 
-        .music-button:hover,
-        .close:hover {
+        .music-button:hover {
             background: rgba(255, 255, 255, .2);
             box-shadow: 0 0 18px #aaa;
         }
@@ -356,40 +309,6 @@
             background: rgba(255, 255, 255, .18);
         }
 
-        /* POPUP */
-        .popup {
-            position: fixed;
-            inset: 0;
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, .85);
-        }
-
-        .popup-content {
-            width: 100%;
-            max-width: 350px;
-            padding: 25px;
-            border: 1px solid #aaa;
-            border-radius: 15px;
-            background: #080808;
-            box-shadow: 0 0 30px rgba(255, 255, 255, .5);
-            text-align: center;
-        }
-
-        .popup-content p {
-            margin-top: 10px;
-            line-height: 1.5;
-            text-shadow: none;
-        }
-
-        .close {
-            margin-top: 20px;
-            padding: 9px 22px;
-        }
-
         /* MOBILE */
         @media (max-width: 380px) {
             .inline-details {
@@ -406,7 +325,6 @@
             }
         }
 
-        /* ANIMATION */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -429,21 +347,6 @@
     </video>
 
     <div class="video-overlay"></div>
-
-    <!-- DISCLAIMER -->
-    <div id="disclaimer">
-        <div class="disclaimer-box">
-            <h2>DISCLAIMER</h2>
-
-            <p>
-                This website is for personal and informational purposes.
-                External links may lead to third-party websites.
-                Use external services responsibly.
-            </p>
-
-            <div class="countdown" id="countdown">5</div>
-        </div>
-    </div>
 
     <!-- CLOCK -->
     <div id="clock">00:00:00</div>
@@ -486,7 +389,7 @@
 
     </nav>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN -->
     <main class="container" id="home">
 
         <div class="title">
@@ -732,34 +635,7 @@
     <script>
         "use strict";
 
-        /* =========================
-           DISCLAIMER
-        ========================= */
-
-        const disclaimer = document.getElementById("disclaimer");
-        const countdown = document.getElementById("countdown");
-
-        let remaining = 5;
-
-        const disclaimerTimer = setInterval(() => {
-            remaining--;
-            countdown.textContent = remaining;
-
-            if (remaining <= 0) {
-                clearInterval(disclaimerTimer);
-
-                disclaimer.style.opacity = "0";
-
-                setTimeout(() => {
-                    disclaimer.remove();
-                }, 600);
-            }
-        }, 1000);
-
-
-        /* =========================
-           LIVE CLOCK
-        ========================= */
+        /* CLOCK */
 
         const clock = document.getElementById("clock");
 
@@ -778,9 +654,7 @@
         setInterval(updateClock, 1000);
 
 
-        /* =========================
-           SIDE MENU
-        ========================= */
+        /* MENU */
 
         const sideMenu = document.getElementById("sideMenu");
         const menuButton = document.getElementById("menuButton");
@@ -792,7 +666,11 @@
 
         menuButton.addEventListener("click", () => {
             const active = sideMenu.classList.toggle("active");
-            menuButton.setAttribute("aria-expanded", String(active));
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                String(active)
+            );
         });
 
         document.querySelectorAll(".side-menu a").forEach(link => {
@@ -800,9 +678,7 @@
         });
 
 
-        /* =========================
-           MUSIC
-        ========================= */
+        /* MUSIC */
 
         const music = document.getElementById("music");
         const musicButton = document.getElementById("musicButton");
@@ -819,19 +695,12 @@
                     musicButton.textContent = "PLAY MUSIC";
                 }
             } catch (error) {
-                musicButton.textContent = "PLAY MUSIC";
                 console.warn("Music could not be played:", error);
             }
         });
 
-        music.addEventListener("ended", () => {
-            musicButton.textContent = "PLAY MUSIC";
-        });
 
-
-        /* =========================
-           DEVICE DETECTION
-        ========================= */
+        /* DEVICE */
 
         function detectDevice() {
             const ua = navigator.userAgent;
@@ -852,12 +721,11 @@
         }
 
 
-        /* =========================
-           OPERATING SYSTEM
-        ========================= */
+        /* OPERATING SYSTEM */
 
         function detectOS() {
             const ua = navigator.userAgent;
+
             let os = "Unknown";
 
             if (/Windows NT 10.0/i.test(ua)) {
@@ -878,9 +746,7 @@
         }
 
 
-        /* =========================
-           BROWSER
-        ========================= */
+        /* BROWSER */
 
         function detectBrowser() {
             const ua = navigator.userAgent;
@@ -930,9 +796,7 @@
         }
 
 
-        /* =========================
-           PLATFORM
-        ========================= */
+        /* PLATFORM */
 
         function detectPlatform() {
             document.getElementById("platformInfo").textContent =
@@ -940,9 +804,7 @@
         }
 
 
-        /* =========================
-           SCREEN
-        ========================= */
+        /* SCREEN */
 
         function detectScreen() {
             document.getElementById("screenInfo").textContent =
@@ -953,9 +815,7 @@
         }
 
 
-        /* =========================
-           TOUCHSCREEN
-        ========================= */
+        /* TOUCHSCREEN */
 
         function detectTouch() {
             const touch =
@@ -967,9 +827,7 @@
         }
 
 
-        /* =========================
-           CPU
-        ========================= */
+        /* CPU */
 
         function detectCPU() {
             document.getElementById("cpuInfo").textContent =
@@ -979,9 +837,7 @@
         }
 
 
-        /* =========================
-           MEMORY
-        ========================= */
+        /* MEMORY */
 
         function detectMemory() {
             const memory = navigator.deviceMemory;
@@ -991,9 +847,7 @@
         }
 
 
-        /* =========================
-           LANGUAGE
-        ========================= */
+        /* LANGUAGE */
 
         function detectLanguage() {
             document.getElementById("languageInfo").textContent =
@@ -1001,9 +855,7 @@
         }
 
 
-        /* =========================
-           TIME ZONE
-        ========================= */
+        /* TIME ZONE */
 
         function detectTimezone() {
             const timezone =
@@ -1014,9 +866,7 @@
         }
 
 
-        /* =========================
-           CONNECTION
-        ========================= */
+        /* CONNECTION */
 
         function detectConnection() {
             const connection =
@@ -1044,19 +894,17 @@
         }
 
 
-        /* =========================
-           BATTERY
-        ========================= */
+        /* BATTERY */
 
         async function detectBattery() {
-            const batteryStatus =
+            const status =
                 document.getElementById("batteryStatus");
 
-            const batteryLevel =
+            const level =
                 document.getElementById("batteryLevel");
 
             if (!navigator.getBattery) {
-                batteryStatus.textContent = "Unavailable";
+                status.textContent = "Unavailable";
                 return;
             }
 
@@ -1067,14 +915,14 @@
                     const percentage =
                         Math.round(battery.level * 100);
 
-                    batteryStatus.textContent =
+                    status.textContent =
                         `${percentage}% ${
                             battery.charging
                                 ? "• Charging"
                                 : ""
                         }`;
 
-                    batteryLevel.style.width =
+                    level.style.width =
                         `${percentage}%`;
                 }
 
@@ -1091,28 +939,28 @@
                 );
 
             } catch {
-                batteryStatus.textContent = "Unavailable";
+                status.textContent = "Unavailable";
             }
         }
 
 
-        /* =========================
-           COOKIES
-        ========================= */
+        /* COOKIES */
 
         function detectCookies() {
             document.getElementById("cookiesInfo").textContent =
-                navigator.cookieEnabled ? "Enabled" : "Disabled";
+                navigator.cookieEnabled
+                    ? "Enabled"
+                    : "Disabled";
         }
 
 
-        /* =========================
-           ONLINE STATUS
-        ========================= */
+        /* ONLINE STATUS */
 
         function updateOnlineStatus() {
             document.getElementById("onlineInfo").textContent =
-                navigator.onLine ? "Online" : "Offline";
+                navigator.onLine
+                    ? "Online"
+                    : "Offline";
         }
 
         window.addEventListener(
@@ -1126,9 +974,7 @@
         );
 
 
-        /* =========================
-           WINDOW SIZE
-        ========================= */
+        /* WINDOW SIZE */
 
         function detectWindowSize() {
             document.getElementById("windowInfo").textContent =
@@ -1141,9 +987,7 @@
         );
 
 
-        /* =========================
-           RUN DETECTION
-        ========================= */
+        /* START */
 
         detectDevice();
         detectOS();
@@ -1163,432 +1007,4 @@
     </script>
 
 </body>
-    </html>    THEY ARE ALL FAKE
-            </a>
-        </div>
-
-    </div>
-
-    <!-- DEVICE INFORMATION -->
-    <div class="device-info" id="device">
-
-        <h2>DEVICE INFORMATION</h2>
-
-        <div class="device-row">
-            <span class="device-label">DEVICE</span>
-            <span class="device-value" id="deviceType">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">OPERATING SYSTEM</span>
-            <span class="device-value" id="osInfo">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">BROWSER</span>
-            <span class="device-value" id="browserInfo">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">BROWSER VERSION</span>
-            <span class="device-value" id="browserVersion">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">PLATFORM</span>
-            <span class="device-value" id="platformInfo">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">SCREEN RESOLUTION</span>
-            <span class="device-value" id="screenInfo">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">AVAILABLE SCREEN</span>
-            <span class="device-value" id="availableScreen">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">PIXEL RATIO</span>
-            <span class="device-value" id="pixelRatio">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">TOUCHSCREEN</span>
-            <span class="device-value" id="touchInfo">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">CPU THREADS</span>
-            <span class="device-value" id="cpuInfo">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">DEVICE MEMORY</span>
-            <span class="device-value" id="memoryInfo">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">LANGUAGE</span>
-            <span class="device-value" id="languageInfo">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">TIME ZONE</span>
-            <span class="device-value" id="timezoneInfo">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">CONNECTION</span>
-            <span class="device-value" id="connectionInfo">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">NETWORK TYPE</span>
-            <span class="device-value" id="networkInfo">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">BATTERY</span>
-            <span class="device-value" id="batteryStatus">
-                Checking...
-            </span>
-        </div>
-
-        <div class="battery-bar">
-            <div class="battery-level" id="batteryLevel"></div>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">COOKIES</span>
-            <span class="device-value" id="cookiesInfo">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">DO NOT TRACK</span>
-            <span class="device-value" id="dntInfo">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">ONLINE STATUS</span>
-            <span class="device-value" id="onlineInfo">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">WINDOW SIZE</span>
-            <span class="device-value" id="windowInfo">
-                Detecting...
-            </span>
-        </div>
-
-        <div class="device-row">
-            <span class="device-label">REFERRER</span>
-            <span class="device-value" id="referrerInfo">
-                Detecting...
-            </span>
-        </div>
-
-    </div>
-
-    <!-- SKILLS -->
-    <div class="section" id="skills">
-
-        <h2>𝗦𝗞𝗜𝗟𝗟𝗦 𝗔𝗡𝗗 𝗘𝗫𝗣𝗘𝗥𝗧</h2>
-
-        <ul>
-            <li>ᴇᴛʜɪᴄᴀʟ ʜᴀᴄᴋɪɴɢ</li>
-            <li>ᴡᴇʙ ᴅᴇᴠᴇʟᴏᴘɪɴɢ</li>
-            <li>ʟɪɴᴜx ᴇxᴘᴇʀᴛ</li>
-            <li>ᴛᴇʀᴍᴜx ᴛᴏᴏʟs ᴍᴀᴋɪɴɢ</li>
-            <li>ᴘʜɪsʜɪɴɢ ᴡᴇʙ ᴍᴀᴋɪɴɢ</li>
-            <li>ᴡᴇʙ ɪɴғᴏ sᴄʀᴀᴘɪɴɢ</li>
-            <li>ɴᴇᴛᴡᴏʀᴋ sᴇᴄᴜʀɪᴛʏ</li>
-            <li>ᴄᴏᴅɪɴɢ</li>
-        </ul>
-
-    </div>
-
-    <!-- LINKS -->
-    <div class="section" id="links">
-
-        <h2>𝐋𝐈𝐍𝐊𝐒</h2>
-
-        <ul>
-
-            <li>
-                <a href="https://t.me/kwalepos254">
-                    ᴛᴇʟᴇɢʀᴀᴍ
-                </a>
-            </li>
-
-            <li>
-                <a href="https://wa.me/27767749959">
-                    ᴡʜᴀᴛsᴀᴘᴘ ᴄᴏᴜʀsᴇ
-                </a>
-            </li>
-
-            <li>
-                <a href="https://t.me/CYBERKEED24">
-                    ᴘʀᴇᴍɪᴜᴍ ᴄᴏᴅᴇs
-                </a>
-            </li>
-
-        </ul>
-
-    </div>
-
-</div>
-
-<!-- POPUP -->
-<div class="popup" id="popup">
-
-    <div class="popup-content">
-
-        <h2 id="popupTitle"></h2>
-
-        <p id="popupText"></p>
-
-        <button class="close" onclick="closePopup()">
-            CLOSE
-        </button>
-
-    </div>
-
-</div>
-
-<script>
-
-/* =========================
-   DISCLAIMER TIMER
-========================= */
-
-let seconds = 5;
-
-const countdown = document.getElementById("countdown");
-const disclaimer = document.getElementById("disclaimer");
-
-const timer = setInterval(function() {
-
-    seconds--;
-
-    countdown.textContent = seconds;
-
-    if (seconds <= 0) {
-
-        clearInterval(timer);
-
-        disclaimer.style.opacity = "0";
-
-        setTimeout(function() {
-            disclaimer.style.display = "none";
-        }, 800);
-    }
-
-}, 1000);
-
-
-/* =========================
-   CLOCK
-========================= */
-
-function updateClock() {
-
-    const now = new Date();
-
-    const hours = String(now.getHours()).padStart(2,"0");
-    const minutes = String(now.getMinutes()).padStart(2,"0");
-    const seconds = String(now.getSeconds()).padStart(2,"0");
-
-    document.getElementById("clock").textContent =
-        hours + ":" + minutes + ":" + seconds;
-}
-
-updateClock();
-
-setInterval(updateClock,1000);
-
-
-/* =========================
-   HAMBURGER MENU
-========================= */
-
-function toggleMenu() {
-
-    document
-        .getElementById("sideMenu")
-        .classList.toggle("active");
-}
-
-function closeMenu() {
-
-    document
-        .getElementById("sideMenu")
-        .classList.remove("active");
-}
-
-
-/* =========================
-   POPUPS
-========================= */
-
-function showPopup(type) {
-
-    closeMenu();
-
-    const popup = document.getElementById("popup");
-    const title = document.getElementById("popupTitle");
-    const text = document.getElementById("popupText");
-
-    popup.style.display = "flex";
-
-    if (type === "ABOUT") {
-
-        title.textContent = "ABOUT";
-
-        text.textContent =
-            "Welcome to the official KWALEPOS profile. " +
-            "This website contains information, skills, projects and useful links.";
-    }
-
-    if (type === "INFO") {
-
-        title.textContent = "INFO";
-
-        text.textContent =
-            "Personal profile and project showcase with " +
-            "a background video, music player, live clock and device information.";
-    }
-
-    if (type === "POLICY") {
-
-        title.textContent = "POLICY";
-
-        text.textContent =
-            "Please use this website responsibly. " +
-            "External websites have their own terms and policies.";
-    }
-}
-
-function closePopup() {
-
-    document.getElementById("popup").style.display = "none";
-}
-
-
-/* =========================
-   MUSIC
-========================= */
-
-const music = document.getElementById("music");
-
-function toggleMusic() {
-
-    const button = document.querySelector(".music-button");
-
-    if (music.paused) {
-
-        music.play().then(function() {
-
-            button.textContent = "PAUSE MUSIC";
-
-        }).catch(function(error) {
-
-            console.log("Unable to play music:", error);
-
-        });
-
-    } else {
-
-        music.pause();
-
-        button.textContent = "PLAY MUSIC";
-    }
-}
-
-
-/* =========================
-   TRY AUTOPLAY
-========================= */
-
-window.addEventListener("load", function() {
-
-    music.volume = 0.5;
-
-    music.play().then(function() {
-
-        document.querySelector(".music-button").textContent =
-            "PAUSE MUSIC";
-
-    }).catch(function() {
-
-        console.log("Browser blocked autoplay. Press PLAY MUSIC.");
-
-    });
-
-});
-
-
-/* =========================
-   BROWSER DETECTION
-========================= */
-
-function getBrowserInfo() {
-
-    const ua = navigator.userAgent;
-
-    let browser = "Unknown Browser";
-    let version = "Unknown";
-
-    if (ua.includes("Edg/")) {
-
-        browser = "Microsoft Edge";
-        version = ua.match(/Edg\/([0-9.]+)/)?.[1] || "Unknown";
-
-    } else if (ua.includes("OPR/")) {
-
-        browser = "Opera";
-        version = ua.match(/OPR\/([0-9.]+)/)?.[1] || "Unknown";
-
-    } else if (ua.includes("Chrome/")) {
-
-        browser = "Google Chrome";
-        version = ua.match(/Chrome\/([0-9.]+)/)?.[1] || "Unknown";
-
-    } else if (ua.includes("Firefox/"
+</html>
