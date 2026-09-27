@@ -1,525 +1,1169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="google-site-verification" content="rnV-4CYHmd--FTZ2ZQUDAFwvTELaCMSA_xCabWi7vf4" />
+    <meta name="google-site-verification"
+          content="rnV-4CYHmd--FTZ2ZQUDAFwvTELaCMSA_xCabWi7vf4">
 
-<title>KWALEPOS BIO & PROJECTS</title>
+    <meta name="description"
+          content="KWALEPOS personal profile, skills, projects and useful links.">
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <title>KWALEPOS BIO & PROJECTS</title>
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
-    background: black;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* BACKGROUND VIDEO */
-.video-bg {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -2;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-.video-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: -1;
-}
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            background: #000;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-/* DISCLAIMER */
-#disclaimer {
-    position: fixed;
-    inset: 0;
-    background: black;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    transition: opacity .8s ease;
-}
+        /* BACKGROUND VIDEO */
+        .video-bg {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
 
-.disclaimer-box {
-    width: 100%;
-    max-width: 350px;
-    padding: 25px;
-    border: 1px solid silver;
-    border-radius: 15px;
-    background: rgba(0,0,0,.9);
-    box-shadow: 0 0 25px silver;
-}
+        .video-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .55);
+            z-index: -1;
+        }
 
-.disclaimer-box h2 {
-    margin-bottom: 15px;
-    text-shadow: 0 0 15px silver;
-}
+        /* DISCLAIMER */
+        #disclaimer {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            background: #000;
+            transition: opacity .6s ease;
+        }
 
-.disclaimer-box p {
-    font-size: 13px;
-    line-height: 1.5;
-    color: #ddd;
-}
+        .disclaimer-box {
+            width: 100%;
+            max-width: 350px;
+            padding: 25px;
+            border: 1px solid #aaa;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, .92);
+            box-shadow: 0 0 25px rgba(255, 255, 255, .45);
+        }
 
-.countdown {
-    margin-top: 15px;
-    font-size: 28px;
-    font-weight: bold;
-    text-shadow: 0 0 15px white;
-}
+        .disclaimer-box h2 {
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px #fff;
+        }
 
-/* CLOCK */
-#clock {
-    position: fixed;
-    top: 20px;
-    left: 15px;
-    z-index: 900;
-    padding: 8px 12px;
-    border: 1px solid silver;
-    border-radius: 20px;
-    background: rgba(0,0,0,.75);
-    font-size: 13px;
-    text-shadow: 0 0 10px silver;
-}
+        .disclaimer-box p {
+            color: #ddd;
+            font-size: 13px;
+            line-height: 1.5;
+            text-shadow: none;
+        }
 
-/* HAMBURGER */
-.menu-button {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    width: 48px;
-    height: 48px;
-    border: 1px solid silver;
-    border-radius: 50%;
-    background: rgba(0,0,0,.8);
-    color: white;
-    font-size: 25px;
-    cursor: pointer;
-    z-index: 1000;
-    box-shadow: 0 0 15px silver;
-}
+        .countdown {
+            margin-top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            text-shadow: 0 0 15px #fff;
+        }
 
-/* SIDE MENU */
-.side-menu {
-    position: fixed;
-    top: 0;
-    right: -280px;
-    width: 260px;
-    height: 100%;
-    background: rgba(0,0,0,.97);
-    z-index: 999;
-    padding: 80px 20px 20px;
-    transition: right .35s ease;
-    border-left: 1px solid silver;
-    box-shadow: -5px 0 25px rgba(255,255,255,.15);
-    overflow-y: auto;
-}
+        /* CLOCK */
+        #clock {
+            position: fixed;
+            top: 20px;
+            left: 15px;
+            z-index: 900;
+            padding: 8px 12px;
+            border: 1px solid #aaa;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, .75);
+            font-size: 13px;
+            text-shadow: 0 0 10px #fff;
+        }
 
-.side-menu.active {
-    right: 0;
-}
+        /* MENU BUTTON */
+        .menu-button {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+            width: 48px;
+            height: 48px;
+            border: 1px solid #aaa;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, .85);
+            color: #fff;
+            font-size: 25px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 255, 255, .5);
+        }
 
-.side-menu h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    text-shadow: 0 0 15px silver;
-}
+        .menu-button:hover {
+            background: rgba(255, 255, 255, .15);
+        }
 
-.side-menu a {
-    display: block;
-    padding: 13px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    background: rgba(255,255,255,.08);
-    color: white;
-    text-decoration: none;
-    text-align: center;
-    text-shadow: 0 0 8px silver;
-}
+        /* SIDE MENU */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            z-index: 999;
+            width: 260px;
+            height: 100%;
+            padding: 80px 20px 20px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, .97);
+            border-left: 1px solid #aaa;
+            box-shadow: -5px 0 25px rgba(255, 255, 255, .15);
+            transition: right .35s ease;
+        }
 
-.side-menu a:hover {
-    background: rgba(255,255,255,.2);
-    color: #00ffcc;
-}
+        .side-menu.active {
+            right: 0;
+        }
 
-/* MAIN CONTAINER */
-.container {
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px 15px;
-    background: rgba(0,0,0,.72);
-    border-radius: 15px;
-    box-shadow: 0 4px 25px rgba(0,0,0,.6);
-    text-align: center;
-    animation: fadeIn 1s ease-in-out;
-}
+        .side-menu h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 0 15px #fff;
+        }
 
-/* TITLE */
-.title {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 1.8em;
-    font-weight: bold;
-    text-shadow: 0 0 15px silver;
-    animation: textGlow .8s ease-in-out infinite;
-}
+        .side-menu a {
+            display: block;
+            padding: 13px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, .08);
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            text-shadow: 0 0 8px #aaa;
+            transition: .2s;
+        }
 
-/* PROFILE */
-.profile-area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 18px;
-}
+        .side-menu a:hover {
+            background: rgba(255, 255, 255, .2);
+            color: #00ffcc;
+        }
 
-.profile-picture {
-    width: 110px;
-    height: 110px;
-    object-fit: cover;
-    border-radius: 50%;
-    display: block;
-    margin: 0;
-    animation: fadeIn 1s ease-in-out;
-    box-shadow: 0 0 20px silver;
-}
+        /* MAIN */
+        .container {
+            width: calc(100% - 30px);
+            max-width: 420px;
+            margin: 20px auto;
+            padding: 20px 15px;
+            background: rgba(0, 0, 0, .72);
+            border-radius: 15px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, .6);
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
 
-/* MUSIC */
-.music-area {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 25px;
-}
+        /* TITLE */
+        .title {
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            font-weight: bold;
+            text-shadow: 0 0 15px #aaa;
+        }
 
-.music-button {
-    border: 1px solid silver;
-    background: rgba(255,255,255,.08);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    text-shadow: 0 0 8px silver;
-    box-shadow: 0 0 10px rgba(255,255,255,.25);
-    transition: .3s;
-}
+        /* PROFILE */
+        .profile-area {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
 
-.music-button:hover {
-    background: rgba(255,255,255,.2);
-    box-shadow: 0 0 18px silver;
-    transform: scale(1.05);
-}
+        .profile-picture {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #aaa;
+        }
 
-/* TEXT */
-h1, h2, p {
-    color: white;
-    text-transform: uppercase;
-    text-shadow: 0 0 10px silver;
-    animation: textGlow .8s ease-in-out infinite;
-    margin-bottom: 10px;
-}
+        /* MUSIC */
+        .music-area {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
 
-h1 {
-    font-size: 1.2em;
-    margin-bottom: 18px;
-}
+        .music-button,
+        .close {
+            padding: 10px 20px;
+            border: 1px solid #aaa;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, .08);
+            color: #fff;
+            cursor: pointer;
+            text-shadow: 0 0 8px #aaa;
+            transition: .3s;
+        }
 
-h2 {
-    font-size: 1.15em;
-}
+        .music-button:hover,
+        .close:hover {
+            background: rgba(255, 255, 255, .2);
+            box-shadow: 0 0 18px #aaa;
+        }
 
-p {
-    font-size: .85em;
-}
+        /* TEXT */
+        h1,
+        h2,
+        p {
+            color: #fff;
+            text-shadow: 0 0 10px #aaa;
+        }
 
-a {
-    color: white;
-    text-decoration: none;
-}
+        h1 {
+            margin-bottom: 18px;
+            font-size: 1.2em;
+        }
 
-/* DETAILS */
-.inline-details {
-    display: flex;
-    justify-content: space-between;
-    gap: 5px;
-    margin-bottom: 15px;
-}
+        h2 {
+            font-size: 1.15em;
+            margin-bottom: 10px;
+        }
 
-.inline-details div {
-    width: 33%;
-    text-align: center;
-    font-size: .75em;
-    animation: textGlow .8s ease-in-out infinite;
-}
+        p {
+            font-size: .85em;
+        }
 
-.place,
-.best-friend {
-    font-size: .75em;
-}
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
 
-/* DEVICE INFORMATION */
-.device-info {
-    margin: 20px 0;
-    padding: 15px;
-    border: 1px solid silver;
-    border-radius: 12px;
-    background: rgba(255,255,255,.07);
-    box-shadow: 0 0 15px rgba(255,255,255,.15);
-    text-align: left;
-}
+        /* DETAILS */
+        .inline-details {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
 
-.device-info h2 {
-    text-align: center;
-    margin-bottom: 15px;
-}
+        .inline-details > div {
+            width: 33.33%;
+            font-size: .72em;
+            line-height: 1.4;
+        }
 
-.device-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 9px 0;
-    border-bottom: 1px solid rgba(255,255,255,.12);
-    font-size: .72em;
-    min-height: 30px;
-}
+        /* DEVICE INFORMATION */
+        .device-info {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #aaa;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, .07);
+            box-shadow: 0 0 15px rgba(255, 255, 255, .15);
+            text-align: left;
+        }
 
-.device-row:last-child {
-    border-bottom: none;
-}
+        .device-info h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
 
-.device-label {
-    color: #aaa;
-    text-align: left;
-    flex-shrink: 0;
-}
+        .device-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 9px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, .12);
+            font-size: .72em;
+        }
 
-.device-value {
-    color: white;
-    text-align: right;
-    max-width: 62%;
-    word-break: break-word;
-    text-shadow: 0 0 8px silver;
-}
+        .device-row:last-child {
+            border-bottom: none;
+        }
 
-.battery-bar {
-    width: 100%;
-    height: 6px;
-    margin-top: 8px;
-    background: rgba(255,255,255,.15);
-    border-radius: 10px;
-    overflow: hidden;
-}
+        .device-label {
+            flex-shrink: 0;
+            color: #aaa;
+        }
 
-.battery-level {
-    height: 100%;
-    width: 0%;
-    background: white;
-    border-radius: 10px;
-    transition: width .5s ease;
-}
+        .device-value {
+            max-width: 62%;
+            color: #fff;
+            text-align: right;
+            word-break: break-word;
+            text-shadow: 0 0 8px #aaa;
+        }
 
-/* SECTIONS */
-.section {
-    margin-top: 18px;
-}
+        .battery-bar {
+            width: 100%;
+            height: 6px;
+            margin-top: 8px;
+            overflow: hidden;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, .15);
+        }
 
-.section ul {
-    list-style: none;
-    padding: 0;
-}
+        .battery-level {
+            width: 0;
+            height: 100%;
+            border-radius: 10px;
+            background: #fff;
+            transition: width .5s ease;
+        }
 
-.section ul li {
-    background: rgba(255,255,255,.1);
-    padding: 8px;
-    margin-bottom: 6px;
-    border-radius: 5px;
-    text-transform: uppercase;
-    text-shadow: 0 0 10px silver;
-    animation: textGlow .8s ease-in-out infinite;
-    font-size: .85em;
-}
+        /* SECTIONS */
+        .section {
+            margin-top: 18px;
+        }
 
-/* POPUP */
-.popup {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.85);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
+        .section ul {
+            padding: 0;
+            list-style: none;
+        }
 
-.popup-content {
-    width: 100%;
-    max-width: 350px;
-    background: #080808;
-    border: 1px solid silver;
-    border-radius: 15px;
-    padding: 25px;
-    text-align: center;
-    box-shadow: 0 0 30px silver;
-}
+        .section li {
+            padding: 8px;
+            margin-bottom: 6px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, .1);
+            font-size: .85em;
+            text-shadow: 0 0 10px #aaa;
+            transition: .2s;
+        }
 
-.popup-content p {
-    text-transform: none;
-    line-height: 1.5;
-}
+        .section li:hover {
+            background: rgba(255, 255, 255, .18);
+        }
 
-.close {
-    margin-top: 20px;
-    padding: 9px 22px;
-    border: 1px solid silver;
-    border-radius: 20px;
-    background: transparent;
-    color: white;
-    cursor: pointer;
-}
+        /* POPUP */
+        .popup {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, .85);
+        }
 
-/* ANIMATIONS */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+        .popup-content {
+            width: 100%;
+            max-width: 350px;
+            padding: 25px;
+            border: 1px solid #aaa;
+            border-radius: 15px;
+            background: #080808;
+            box-shadow: 0 0 30px rgba(255, 255, 255, .5);
+            text-align: center;
+        }
 
-@keyframes textGlow {
-    0% {
-        text-shadow: 0 0 10px silver, 0 0 20px silver;
-    }
-    50% {
-        text-shadow: 0 0 20px silver, 0 0 30px silver;
-    }
-    100% {
-        text-shadow: 0 0 10px silver, 0 0 20px silver;
-    }
-}
-</style>
+        .popup-content p {
+            margin-top: 10px;
+            line-height: 1.5;
+            text-shadow: none;
+        }
+
+        .close {
+            margin-top: 20px;
+            padding: 9px 22px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 380px) {
+            .inline-details {
+                flex-direction: column;
+            }
+
+            .inline-details > div {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+
+            .container {
+                margin-top: 80px;
+            }
+        }
+
+        /* ANIMATION */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND VIDEO -->
-<video class="video-bg" autoplay muted loop playsinline>
-    <source src="https://BJ-Devs.serv00.net/Bjtricks.mp4?v=1727712312654" type="video/mp4">
-</video>
+    <!-- BACKGROUND VIDEO -->
+    <video class="video-bg" autoplay muted loop playsinline>
+        <source
+            src="https://BJ-Devs.serv00.net/Bjtricks.mp4?v=1727712312654"
+            type="video/mp4">
+    </video>
 
-<div class="video-overlay"></div>
+    <div class="video-overlay"></div>
 
-<!-- 5 SECOND DISCLAIMER -->
-<div id="disclaimer">
-    <div class="disclaimer-box">
-        <h2>DISCLAIMER</h2>
+    <!-- DISCLAIMER -->
+    <div id="disclaimer">
+        <div class="disclaimer-box">
+            <h2>DISCLAIMER</h2>
 
-        <p>
-            This website is for personal and informational purposes.
-            External links may lead to third-party websites.
-            Use external services responsibly.
-        </p>
+            <p>
+                This website is for personal and informational purposes.
+                External links may lead to third-party websites.
+                Use external services responsibly.
+            </p>
 
-        <div class="countdown" id="countdown">5</div>
-    </div>
-</div>
-
-<!-- CLOCK -->
-<div id="clock">00:00:00</div>
-
-<!-- HAMBURGER -->
-<button class="menu-button" onclick="toggleMenu()">☰</button>
-
-<!-- MENU -->
-<div class="side-menu" id="sideMenu">
-
-    <h2>MENU</h2>
-
-    <a href="#home" onclick="closeMenu()">HOME</a>
-
-    <a href="#" onclick="showPopup('ABOUT')">ABOUT</a>
-
-    <a href="#" onclick="showPopup('INFO')">INFO</a>
-
-    <a href="#" onclick="showPopup('POLICY')">POLICY</a>
-
-    <a href="#skills" onclick="closeMenu()">SKILLS</a>
-
-    <a href="#device" onclick="closeMenu()">DEVICE INFORMATION</a>
-
-    <a href="#links" onclick="closeMenu()">LINKS</a>
-
-    <a href="https://t.me/kwalepos254" target="_blank">
-        TELEGRAM
-    </a>
-
-    <a href="https://wa.me/27767749959" target="_blank">
-        WHATSAPP
-    </a>
-
-</div>
-
-<!-- MAIN -->
-<div class="container" id="home">
-
-    <!-- KING KWALEPOS -->
-    <div class="title">
-        𝙆𝙄𝙉𝙂 𝙆𝙒𝘼𝙇𝙀𝙋𝙊𝙎
+            <div class="countdown" id="countdown">5</div>
+        </div>
     </div>
 
-    <!-- PROFILE -->
-    <div class="profile-area">
-        <img
-            src="https://cdn.phototourl.com/free/2026-08-24-d3764ede-841c-4dea-ac02-ba2d394c11bf.png"
-            alt="Profile Picture"
-            class="profile-picture"
-        >
-    </div>
+    <!-- CLOCK -->
+    <div id="clock">00:00:00</div>
 
-    <!-- MUSIC -->
-    <audio id="music" loop preload="auto">
-        <source src="https://videotourl.com/audio/1787631157832-c9318cae-20f2-4c05-9c96-9f9776050140.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <!-- MENU BUTTON -->
+    <button
+        class="menu-button"
+        id="menuButton"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false">
+        ☰
+    </button>
 
-    <div class="music-area">
-        <button class="music-button" onclick="toggleMusic()">
-            PLAY MUSIC
-        </button>
-    </div>
+    <!-- SIDE MENU -->
+    <nav class="side-menu" id="sideMenu">
 
-    <!-- WEBSITE -->
-    <h1>
-        <a href="https://t.me/kwalepos254">
-            𝐓𝐄𝐅𝐀𝐆𝐇𝐎-𝐌𝐎𝐃𝐙.𝐂𝐎𝐌
+        <h2>MENU</h2>
+
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#info">INFO</a>
+        <a href="#skills">SKILLS</a>
+        <a href="#device">DEVICE INFORMATION</a>
+        <a href="#links">LINKS</a>
+
+        <a
+            href="https://t.me/kwalepos254"
+            target="_blank"
+            rel="noopener noreferrer">
+            TELEGRAM
         </a>
-    </h1>
 
-    <!-- DETAILS -->
-    <div class="inline-details">
+        <a
+            href="https://wa.me/27767749959"
+            target="_blank"
+            rel="noopener noreferrer">
+            WHATSAPP
+        </a>
 
-        <div class="place">
-            𝗣𝗟𝗔𝗖𝗘 : LIMPOPO
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="container" id="home">
+
+        <div class="title">
+            𝙆𝙄𝙉𝙂 𝙆𝙒𝘼𝙇𝙀𝙋𝙊𝙎
         </div>
 
-        <div>
-            𝗔𝗚𝗘: 14
+        <!-- PROFILE -->
+        <div class="profile-area">
+            <img
+                src="https://cdn.phototourl.com/free/2026-08-24-d3764ede-841c-4dea-ac02-ba2d394c11bf.png"
+                alt="KWALEPOS profile picture"
+                class="profile-picture"
+                loading="lazy">
         </div>
 
-        <div class="best-friend">
-            <a href="#">
-                𝗕𝗘𝗦𝗧 𝗙𝗥𝗜𝗘𝗡𝗗:
-                THEY ARE ALL FAKE
+        <!-- MUSIC -->
+        <audio id="music" loop preload="metadata">
+            <source
+                src="https://videotourl.com/audio/1787631157832-c9318cae-20f2-4c05-9c96-9f9776050140.mp3"
+                type="audio/mpeg">
+        </audio>
+
+        <div class="music-area">
+            <button
+                class="music-button"
+                id="musicButton"
+                type="button">
+                PLAY MUSIC
+            </button>
+        </div>
+
+        <!-- WEBSITE -->
+        <h1>
+            <a href="https://t.me/kwalepos254">
+                𝐓𝐄𝐅𝐀𝐆𝐇𝐎-𝐌𝐎𝐃𝐙.𝐂𝐎𝐌
+            </a>
+        </h1>
+
+        <!-- DETAILS -->
+        <div class="inline-details">
+
+            <div>
+                𝗣𝗟𝗔𝗖𝗘 : LIMPOPO
+            </div>
+
+            <div>
+                𝗔𝗚𝗘: 14
+            </div>
+
+            <div>
+                𝗕𝗘𝗦𝗧 𝗙𝗥𝗜𝗘𝗡𝗗: THEY ARE ALL FAKE
+            </div>
+
+        </div>
+
+        <!-- ABOUT -->
+        <section class="section" id="about">
+
+            <h2>ABOUT</h2>
+
+            <p>
+                Welcome to the KWALEPOS profile.
+                This website contains personal information,
+                skills, projects and useful links.
+            </p>
+
+        </section>
+
+        <!-- INFO -->
+        <section class="section" id="info">
+
+            <h2>INFO</h2>
+
+            <p>
+                Personal profile and project showcase
+                featuring a background video, music player,
+                live clock and device information.
+            </p>
+
+        </section>
+
+        <!-- DEVICE INFORMATION -->
+        <section class="device-info" id="device">
+
+            <h2>DEVICE INFORMATION</h2>
+
+            <div class="device-row">
+                <span class="device-label">DEVICE</span>
+                <span class="device-value" id="deviceType">Detecting...</span>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">OPERATING SYSTEM</span>
+                <span class="device-value" id="osInfo">Detecting...</span>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">BROWSER</span>
+                <span class="device-value" id="browserInfo">Detecting...</span>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">BROWSER VERSION</span>
+                <span class="device-value" id="browserVersion">Detecting...</span>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">PLATFORM</span>
+                <span class="device-value" id="platformInfo">Detecting...</span>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">SCREEN</span>
+                <span class="device-value" id="screenInfo">Detecting...</span>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">PIXEL RATIO</span>
+                <span class="device-value" id="pixelRatio">Detecting...</span>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">TOUCHSCREEN</span>
+                <span class="device-value" id="touchInfo">Detecting...</span>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">CPU THREADS</span>
+                <span class="device-value" id="cpuInfo">Detecting...</span>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">DEVICE MEMORY</span>
+                <span class="device-value" id="memoryInfo">Detecting...</span>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">LANGUAGE</span>
+                <span class="device-value" id="languageInfo">Detecting...</span>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">TIME ZONE</span>
+                <span class="device-value" id="timezoneInfo">Detecting...</span>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">CONNECTION</span>
+                <span class="device-value" id="connectionInfo">Detecting...</span>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">NETWORK TYPE</span>
+                <span class="device-value" id="networkInfo">Detecting...</span>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">BATTERY</span>
+                <span class="device-value" id="batteryStatus">
+                    Checking...
+                </span>
+            </div>
+
+            <div class="battery-bar">
+                <div class="battery-level" id="batteryLevel"></div>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">COOKIES</span>
+                <span class="device-value" id="cookiesInfo">Detecting...</span>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">ONLINE STATUS</span>
+                <span class="device-value" id="onlineInfo">Detecting...</span>
+            </div>
+
+            <div class="device-row">
+                <span class="device-label">WINDOW SIZE</span>
+                <span class="device-value" id="windowInfo">Detecting...</span>
+            </div>
+
+        </section>
+
+        <!-- SKILLS -->
+        <section class="section" id="skills">
+
+            <h2>𝗦𝗞𝗜𝗟𝗟𝗦 𝗔𝗡𝗗 𝗘𝗫𝗣𝗘𝗥𝗧</h2>
+
+            <ul>
+                <li>ᴇᴛʜɪᴄᴀʟ ʜᴀᴄᴋɪɴɢ</li>
+                <li>ᴡᴇʙ ᴅᴇᴠᴇʟᴏᴘɪɴɢ</li>
+                <li>ʟɪɴᴜx</li>
+                <li>ᴛᴇʀᴍᴜx ᴛᴏᴏʟs ᴍᴀᴋɪɴɢ</li>
+                <li>ᴡᴇʙ sᴇᴄᴜʀɪᴛʏ ᴛᴇsᴛɪɴɢ</li>
+                <li>ᴡᴇʙ ɪɴғᴏ sᴄʀᴀᴘɪɴɢ</li>
+                <li>ɴᴇᴛᴡᴏʀᴋ sᴇᴄᴜʀɪᴛʏ</li>
+                <li>ᴄᴏᴅɪɴɢ</li>
+            </ul>
+
+        </section>
+
+        <!-- LINKS -->
+        <section class="section" id="links">
+
+            <h2>𝐋𝐈𝐍𝐊𝐒</h2>
+
+            <ul>
+
+                <li>
+                    <a
+                        href="https://t.me/kwalepos254"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        ᴛᴇʟᴇɢʀᴀᴍ
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="https://wa.me/27767749959"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        ᴡʜᴀᴛsᴀᴘᴘ ᴄᴏᴜʀsᴇ
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="https://t.me/CYBERKEED24"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        ᴘʀᴇᴍɪᴜᴍ ᴄᴏᴅᴇs
+                    </a>
+                </li>
+
+            </ul>
+
+        </section>
+
+    </main>
+
+    <script>
+        "use strict";
+
+        /* =========================
+           DISCLAIMER
+        ========================= */
+
+        const disclaimer = document.getElementById("disclaimer");
+        const countdown = document.getElementById("countdown");
+
+        let remaining = 5;
+
+        const disclaimerTimer = setInterval(() => {
+            remaining--;
+            countdown.textContent = remaining;
+
+            if (remaining <= 0) {
+                clearInterval(disclaimerTimer);
+
+                disclaimer.style.opacity = "0";
+
+                setTimeout(() => {
+                    disclaimer.remove();
+                }, 600);
+            }
+        }, 1000);
+
+
+        /* =========================
+           LIVE CLOCK
+        ========================= */
+
+        const clock = document.getElementById("clock");
+
+        function updateClock() {
+            const now = new Date();
+
+            clock.textContent = now.toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: false
+            });
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+
+
+        /* =========================
+           SIDE MENU
+        ========================= */
+
+        const sideMenu = document.getElementById("sideMenu");
+        const menuButton = document.getElementById("menuButton");
+
+        function closeMenu() {
+            sideMenu.classList.remove("active");
+            menuButton.setAttribute("aria-expanded", "false");
+        }
+
+        menuButton.addEventListener("click", () => {
+            const active = sideMenu.classList.toggle("active");
+            menuButton.setAttribute("aria-expanded", String(active));
+        });
+
+        document.querySelectorAll(".side-menu a").forEach(link => {
+            link.addEventListener("click", closeMenu);
+        });
+
+
+        /* =========================
+           MUSIC
+        ========================= */
+
+        const music = document.getElementById("music");
+        const musicButton = document.getElementById("musicButton");
+
+        music.volume = 0.5;
+
+        musicButton.addEventListener("click", async () => {
+            try {
+                if (music.paused) {
+                    await music.play();
+                    musicButton.textContent = "PAUSE MUSIC";
+                } else {
+                    music.pause();
+                    musicButton.textContent = "PLAY MUSIC";
+                }
+            } catch (error) {
+                musicButton.textContent = "PLAY MUSIC";
+                console.warn("Music could not be played:", error);
+            }
+        });
+
+        music.addEventListener("ended", () => {
+            musicButton.textContent = "PLAY MUSIC";
+        });
+
+
+        /* =========================
+           DEVICE DETECTION
+        ========================= */
+
+        function detectDevice() {
+            const ua = navigator.userAgent;
+
+            let device = "Desktop";
+
+            if (/iPhone/i.test(ua)) {
+                device = "iPhone";
+            } else if (/iPad/i.test(ua)) {
+                device = "iPad";
+            } else if (/Android/i.test(ua)) {
+                device = /Mobile/i.test(ua)
+                    ? "Android Phone"
+                    : "Android Tablet";
+            }
+
+            document.getElementById("deviceType").textContent = device;
+        }
+
+
+        /* =========================
+           OPERATING SYSTEM
+        ========================= */
+
+        function detectOS() {
+            const ua = navigator.userAgent;
+            let os = "Unknown";
+
+            if (/Windows NT 10.0/i.test(ua)) {
+                os = "Windows 10/11";
+            } else if (/Windows NT/i.test(ua)) {
+                os = "Windows";
+            } else if (/Android/i.test(ua)) {
+                os = "Android";
+            } else if (/iPhone|iPad|iPod/i.test(ua)) {
+                os = "iOS";
+            } else if (/Mac OS X/i.test(ua)) {
+                os = "macOS";
+            } else if (/Linux/i.test(ua)) {
+                os = "Linux";
+            }
+
+            document.getElementById("osInfo").textContent = os;
+        }
+
+
+        /* =========================
+           BROWSER
+        ========================= */
+
+        function detectBrowser() {
+            const ua = navigator.userAgent;
+
+            let browser = "Unknown";
+            let version = "Unknown";
+
+            const browsers = [
+                {
+                    name: "Microsoft Edge",
+                    regex: /Edg\/([0-9.]+)/i
+                },
+                {
+                    name: "Opera",
+                    regex: /OPR\/([0-9.]+)/i
+                },
+                {
+                    name: "Samsung Internet",
+                    regex: /SamsungBrowser\/([0-9.]+)/i
+                },
+                {
+                    name: "Firefox",
+                    regex: /Firefox\/([0-9.]+)/i
+                },
+                {
+                    name: "Chrome",
+                    regex: /Chrome\/([0-9.]+)/i
+                },
+                {
+                    name: "Safari",
+                    regex: /Version\/([0-9.]+).*Safari/i
+                }
+            ];
+
+            for (const item of browsers) {
+                const match = ua.match(item.regex);
+
+                if (match) {
+                    browser = item.name;
+                    version = match[1];
+                    break;
+                }
+            }
+
+            document.getElementById("browserInfo").textContent = browser;
+            document.getElementById("browserVersion").textContent = version;
+        }
+
+
+        /* =========================
+           PLATFORM
+        ========================= */
+
+        function detectPlatform() {
+            document.getElementById("platformInfo").textContent =
+                navigator.platform || "Unavailable";
+        }
+
+
+        /* =========================
+           SCREEN
+        ========================= */
+
+        function detectScreen() {
+            document.getElementById("screenInfo").textContent =
+                `${screen.width} × ${screen.height}`;
+
+            document.getElementById("pixelRatio").textContent =
+                window.devicePixelRatio || "1";
+        }
+
+
+        /* =========================
+           TOUCHSCREEN
+        ========================= */
+
+        function detectTouch() {
+            const touch =
+                "ontouchstart" in window ||
+                navigator.maxTouchPoints > 0;
+
+            document.getElementById("touchInfo").textContent =
+                touch ? "Yes" : "No";
+        }
+
+
+        /* =========================
+           CPU
+        ========================= */
+
+        function detectCPU() {
+            document.getElementById("cpuInfo").textContent =
+                navigator.hardwareConcurrency
+                    ? `${navigator.hardwareConcurrency} threads`
+                    : "Unavailable";
+        }
+
+
+        /* =========================
+           MEMORY
+        ========================= */
+
+        function detectMemory() {
+            const memory = navigator.deviceMemory;
+
+            document.getElementById("memoryInfo").textContent =
+                memory ? `${memory} GB` : "Unavailable";
+        }
+
+
+        /* =========================
+           LANGUAGE
+        ========================= */
+
+        function detectLanguage() {
+            document.getElementById("languageInfo").textContent =
+                navigator.language || "Unavailable";
+        }
+
+
+        /* =========================
+           TIME ZONE
+        ========================= */
+
+        function detectTimezone() {
+            const timezone =
+                Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+            document.getElementById("timezoneInfo").textContent =
+                timezone || "Unavailable";
+        }
+
+
+        /* =========================
+           CONNECTION
+        ========================= */
+
+        function detectConnection() {
+            const connection =
+                navigator.connection ||
+                navigator.mozConnection ||
+                navigator.webkitConnection;
+
+            if (!connection) {
+                document.getElementById("connectionInfo").textContent =
+                    "Unavailable";
+
+                document.getElementById("networkInfo").textContent =
+                    "Unavailable";
+
+                return;
+            }
+
+            document.getElementById("connectionInfo").textContent =
+                connection.effectiveType
+                    ? connection.effectiveType.toUpperCase()
+                    : "Available";
+
+            document.getElementById("networkInfo").textContent =
+                connection.type || "Unavailable";
+        }
+
+
+        /* =========================
+           BATTERY
+        ========================= */
+
+        async function detectBattery() {
+            const batteryStatus =
+                document.getElementById("batteryStatus");
+
+            const batteryLevel =
+                document.getElementById("batteryLevel");
+
+            if (!navigator.getBattery) {
+                batteryStatus.textContent = "Unavailable";
+                return;
+            }
+
+            try {
+                const battery = await navigator.getBattery();
+
+                function updateBattery() {
+                    const percentage =
+                        Math.round(battery.level * 100);
+
+                    batteryStatus.textContent =
+                        `${percentage}% ${
+                            battery.charging
+                                ? "• Charging"
+                                : ""
+                        }`;
+
+                    batteryLevel.style.width =
+                        `${percentage}%`;
+                }
+
+                updateBattery();
+
+                battery.addEventListener(
+                    "levelchange",
+                    updateBattery
+                );
+
+                battery.addEventListener(
+                    "chargingchange",
+                    updateBattery
+                );
+
+            } catch {
+                batteryStatus.textContent = "Unavailable";
+            }
+        }
+
+
+        /* =========================
+           COOKIES
+        ========================= */
+
+        function detectCookies() {
+            document.getElementById("cookiesInfo").textContent =
+                navigator.cookieEnabled ? "Enabled" : "Disabled";
+        }
+
+
+        /* =========================
+           ONLINE STATUS
+        ========================= */
+
+        function updateOnlineStatus() {
+            document.getElementById("onlineInfo").textContent =
+                navigator.onLine ? "Online" : "Offline";
+        }
+
+        window.addEventListener(
+            "online",
+            updateOnlineStatus
+        );
+
+        window.addEventListener(
+            "offline",
+            updateOnlineStatus
+        );
+
+
+        /* =========================
+           WINDOW SIZE
+        ========================= */
+
+        function detectWindowSize() {
+            document.getElementById("windowInfo").textContent =
+                `${window.innerWidth} × ${window.innerHeight}`;
+        }
+
+        window.addEventListener(
+            "resize",
+            detectWindowSize
+        );
+
+
+        /* =========================
+           RUN DETECTION
+        ========================= */
+
+        detectDevice();
+        detectOS();
+        detectBrowser();
+        detectPlatform();
+        detectScreen();
+        detectTouch();
+        detectCPU();
+        detectMemory();
+        detectLanguage();
+        detectTimezone();
+        detectConnection();
+        detectBattery();
+        detectCookies();
+        updateOnlineStatus();
+        detectWindowSize();
+    </script>
+
+</body>
+    </html>    THEY ARE ALL FAKE
             </a>
         </div>
 
